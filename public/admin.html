@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web 管理 - 西安手艺工坊</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<a class="skiplink" href="#main">跳到管理内容</a>
+<header class="site-header"><div class="wrap"><a class="brand" href="index.html">西安手艺工坊</a><nav class="site-nav" aria-label="主导航"><a href="index.html">手艺阅读</a><a href="admin.html">Web 管理</a></nav></div></header>
+<main id="main" class="wrap">
+  <section class="panel">
+    <h1>材料、注释、媒体与工序版本管理</h1>
+    <p class="meta">所有发布校验在服务端执行：循环依赖、缺材料、分支互斥、汇合条件、字幕换版、媒体不可用、授权撤销。</p>
+    <div class="field-row"><label for="adminKey">管理员密钥（开发默认 dev-admin-key）<input id="adminKey" type="password" value="dev-admin-key"></label><button onclick="loadState()">载入数据</button></div>
+    <div id="message" role="status" aria-live="polite"></div>
+  </section>
+  <div class="admin-layout">
+    <aside class="panel admin-side">
+      <nav aria-label="管理分区">
+        <a href="#editor">工序编辑与发布</a><a href="#versions">步骤版本/回滚</a><a href="#materials">材料</a><a href="#media">媒体与字幕</a><a href="#annotations">注释审核</a>
+      </nav>
+    </aside>
+    <div>
+      <section id="editor" class="panel" aria-labelledby="editor-title">
+        <h2 id="editor-title" class="section-title">工序编辑</h2>
+        <p class="meta">拖动仅调整展示顺序；依赖图始终由独立字段决定。键盘可用上移/下移按钮排序。</p>
+        <form id="draftForm">
+          <input type="hidden" id="baseVersionId">
+          <label>专题标题<input id="draftTitle"></label>
+          <label>摘要<input id="draftSummary"></label>
+          <label>经审核工艺介绍<textarea id="draftContent"></textarea></label>
+          <div class="field-row">
+            <label>风险提示<select id="riskNotice"></select></label>
+            <label>发布升级模式<select id="publishMode"><option value="frozen">整个教程冻结（主版本）</option><option value="stepwise">按步骤升级（次版本）</option></select></label>
+            <label class="checkline"><input id="draftApproved" type="checkbox" checked> 内容已通过审核</label>
+          </div>
+          <label>审核说明<input id="reviewNote"></label>
+          <h3>步骤</h3><div id="stepEditor"></div>
+          <div class="step-actions"><button type="button" class="secondary" onclick="addStep()">增加步骤</button><button type="button" onclick="saveDraft(false)">保存草稿并服务端校验</button><button type="button" onclick="saveDraft(true)">校验后发布</button></div>
+        </form>
+      </section>
+      <section id="versions" class="panel" aria-labelledby="versions-title"><h2 id="versions-title" class="section-title">步骤版本</h2><div id="versionList"></div></section>
+      <section id="materials" class="panel" aria-labelledby="materials-title"><h2 id="materials-title" class="section-title">材料</h2><form id="materialForm" class="field-row"><label>名称<input id="matName" required></label><label>说明<input id="matDesc"></label><button>新增材料</button></form><div id="materialList" class="item-list"></div></section>
+      <section id="media" class="panel" aria-labelledby="media-title"><h2 id="media-title" class="section-title">媒体与字幕</h2>
+        <form id="mediaForm">
+          <div class="field-row"><label>标题<input id="medTitle" required></label><label>类型<select id="medType"><option value="image">图片</option><option value="video">视频</option><option value="audio">音频</option></select></label><label>URL 或相对路径<input id="medUrl" required></label></div>
+          <label>替代文字/无障碍说明<input id="medAlt"></label><label>完整文字替代方案<textarea id="medTextAlt"></textarea></label>
+          <div class="field-row"><label class="checkline"><input id="medAvailable" type="checkbox" checked> 当前可用</label><label class="checkline"><input id="medLicense" type="checkbox" checked> 授权有效</label><label class="checkline"><input id="medApproved" type="checkbox" checked> 已审核</label></div>
+          <button>新增媒体</button>
+        </form><div id="mediaList" class="item-list"></div>
+      </section>
+      <section id="annotations" class="panel" aria-labelledby="annotations-title"><h2 id="annotations-title" class="section-title">注释审核</h2>
+        <form id="annotationForm" class="field-row"><label>目标步骤 key 或 craft id<input id="annTarget" value="pattern"></label><label>类型<select id="annType"><option value="step">步骤</option><option value="craft">专题</option></select></label><label>注释内容<input id="annBody"></label><button>新增注释</button></form><div id="annotationList" class="item-list"></div>
+      </section>
+    </div>
+  </div>
+</main>
+<script src="js/admin.js"></script>
+</body>
+</html>

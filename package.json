@@ -1,0 +1,14 @@
+{
+  "name": "xian-craft-workshop",
+  "version": "1.0.0",
+  "description": "西安手艺专题：工序编辑、版本化阅读、材料/注释/媒体管理与访客阅读进度确认",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/api.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>西安手艺工序阅读</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="../css/style.css" onerror="this.remove()">
+</head>
+<body>
+<a class="skiplink" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">西安手艺工坊</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="index.html">手艺阅读</a>
+      <a href="admin.html">Web 管理</a>
+      <a href="../activities.html">民俗专题</a>
+    </nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="wrap">
+    <h1>工序有依据，阅读可追溯</h1>
+    <p>支持必需前置、可选分支、汇合条件与步骤版本。访客可在手机上确认阅读进度；确认仅代表阅读，不代表获得实际操作资格。</p>
+  </div>
+</section>
+<main id="main" class="wrap">
+  <div id="message" class="notice" hidden></div>
+  <section aria-labelledby="crafts-title">
+    <h2 id="crafts-title" class="section-title">经审核工艺介绍</h2>
+    <div id="crafts" class="grid" aria-live="polite"></div>
+  </section>
+  <section class="panel" aria-labelledby="rules-title">
+    <h2 id="rules-title" class="section-title">学习者版本规则</h2>
+    <div class="grid">
+      <article><h3>整个教程冻结</h3><p>进入新版时，所有步骤重新阅读确认；旧进度保留在历史中，不会被误认为新要求已完成。</p></article>
+      <article><h3>按步骤升级</h3><p>只有稳定步骤标识和内容哈希完全一致、依赖仍成立的勾选可迁移。合并、拆分、材料或要求变化均重新确认。</p></article>
+      <article><h3>服务端约束</h3><p>循环依赖、缺材料、分支互斥/汇合条件、字幕换版和素材授权撤销均由后端检查，前端展示不能绕过。</p></article>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="wrap"><p>内容仅展示经审核的工艺介绍及原有风险提示。历史链接不会显示授权已撤销的素材正文。</p></div></footer>
+<script src="js/reader.js"></script>
+<script>window.renderCraftList && window.renderCraftList();</script>
+</body>
+</html>
