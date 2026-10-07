@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手艺专题 · Web 管理</title>
+<link rel="stylesheet" href="/craft.css">
+</head>
+<body>
+<a class="skip-link" href="#work">跳到工作台</a>
+<header class="topbar">
+  <div class="wrap">
+    <strong>手艺专题 · 管理端</strong>
+    <nav class="topnav" aria-label="主导航">
+      <a href="/">阅读端</a><a href="/admin">管理端</a><a href="/index.html">返回文化站</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="work">
+  <section class="row" style="margin-top:14px">
+    <label for="adminKey">管理密钥：</label>
+    <input id="adminKey" type="password" placeholder="dev-admin-key" style="flex:1;min-width:180px">
+    <button class="btn" id="connect" type="button">连接</button>
+    <span id="connState" class="kv"></span>
+  </section>
+
+  <div class="admin-grid">
+    <div>
+      <section class="panel">
+        <h2>教程</h2>
+        <div class="row">
+          <input id="newTutTitle" placeholder="新建教程标题" style="flex:1">
+          <select id="newTutMode" aria-label="发布模型"><option value="stepwise">按步骤升级</option><option value="frozen">整个教程冻结</option></select>
+          <button class="btn" id="newTut" type="button">新建</button>
+        </div>
+        <ul id="tutList"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>材料</h2>
+        <div class="row"><input id="newMat" placeholder="材料名称" style="flex:1"><button class="btn" id="addMat" type="button">新增（待审）</button></div>
+        <ul id="matList"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>媒体与字幕</h2>
+        <div class="row"><input id="newVid" placeholder="媒体标题" style="flex:1"><button class="btn" id="addVid" type="button">新增媒体</button></div>
+        <ul id="vidList"></ul>
+      </section>
+    </div>
+
+    <section class="panel" id="tutPanel" aria-live="polite">
+      <p class="kv">选择左侧教程以编辑工序。</p>
+    </section>
+  </div>
+</main>
+<script src="/js/admin.js"></script>
+</body>
+</html>

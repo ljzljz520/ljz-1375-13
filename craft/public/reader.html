@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手艺专题 · 工序阅读</title>
+<link rel="stylesheet" href="/craft.css">
+</head>
+<body>
+<a class="skip-link" href="#steps">跳到工序列表</a>
+<header class="topbar">
+  <div class="wrap">
+    <strong>手艺专题</strong>
+    <nav aria-label="主导航" class="topnav">
+      <a href="/">阅读（访客）</a>
+      <a href="/admin">Web 管理</a>
+      <a href="/index.html">返回文化站</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <section class="learner-bar" aria-label="学习者">
+    <label for="learnerSel">学习者：</label>
+    <select id="learnerSel" aria-label="选择学习者"></select>
+    <button id="newLearner" class="btn" type="button">新建访客</button>
+    <span id="netState" class="net" aria-live="polite"></span>
+  </section>
+
+  <section id="tutList" aria-label="教程列表"></section>
+
+  <article id="tutView" hidden>
+    <button class="btn btn-back" id="backBtn" type="button">&larr; 返回列表</button>
+    <h1 id="tTitle"></h1>
+    <p class="mode-tag" id="tMode"></p>
+    <section class="notice intro" aria-label="工艺介绍">
+      <h2>工艺介绍（经审核）</h2>
+      <p id="tIntro"></p>
+    </section>
+    <section class="notice risk" aria-label="风险提示">
+      <h2>风险提示（原有）</h2>
+      <p id="tRisk"></p>
+      <p class="disclaimer">阅读确认仅表示你已阅读本页内容，<strong>不代表获得任何实际操作资格</strong>。</p>
+    </section>
+
+    <div id="migrateBox" class="migrate" hidden>
+      <p>你正在学习该教程的旧冻结版本，教程已发布新版本。</p>
+      <button class="btn" id="previewMigrate" type="button">查看迁移影响</button>
+      <button class="btn btn-primary" id="doMigrate" type="button">迁移到新版本</button>
+      <div id="migrateDetail"></div>
+    </div>
+
+    <div class="progress-line" aria-label="阅读进度">
+      <div id="progressBar" class="bar"></div>
+      <span id="progressText"></span>
+    </div>
+
+    <ol id="steps" class="steps" tabindex="-1"></ol>
+  </article>
+</main>
+
+<footer class="footer wrap">
+  <p>页面始终提供完整文字；视频不可用时以文字替代呈现。历史链接不会展示授权已撤销的素材。</p>
+</footer>
+
+<script src="/js/reader.js"></script>
+</body>
+</html>
